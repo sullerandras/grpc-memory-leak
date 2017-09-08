@@ -1,0 +1,14 @@
+version: '2'
+services:
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "ruby test.rb"
+    environment:
+      - JEMALLOC_STATS=true
+    volumes:
+      - .:/app
+      - ./log:/app/log
+    ports:
+      - "3000:3000"
